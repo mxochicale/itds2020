@@ -15,6 +15,11 @@
 \patchcmd{\@@description}{\raggedright}{\justifying}{}{}
 \makeatother
 
+% table of content with numbers and justification
+% https://tex.stackexchange.com/questions/188773
+\setbeamertemplate{section in toc}{\hspace*{1em}\inserttocsectionnumber.~\inserttocsection\par}
+\setbeamertemplate{subsection in toc}{\hspace*{2em}\inserttocsectionnumber.\inserttocsubsectionnumber.~\inserttocsubsection\par}
+
 % math related packages
 \usepackage{amsmath}
 \usepackage[ruled,vlined]{algorithm2e}
@@ -130,4 +135,18 @@
       \end{framed}
     \end{minipage}%
   \end{center}
+}
+
+
+%---------------------------------------------------------------------
+% Add Paper using {\paper{}. begin{beawer} ... end{beamer} }
+%---------------------------------------------------------------------
+\newcommand\paper[1]{
+	\setbeamertemplate{footline}
+	{
+		\begin{beamercolorbox}[wd=\textwidth,ht=3mm,dp=03mm,leftskip=0.3cm,rightskip=0.3cm]{black}%
+        		\usebeamerfont{page number in head/foot}
+			(#1)\mbox{}\hfill\insertframenumber
+		\end{beamercolorbox}%
+	}
 }
