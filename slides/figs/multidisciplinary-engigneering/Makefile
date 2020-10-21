@@ -11,10 +11,10 @@ all:	$(FIGURES_PNG)
 
 # Pattern rule for converting SVG to PNG
 versions/%.png: vectors/%.svg
-	$(INKSCAPE) --export-png $(@) $(<)
+	$(INKSCAPE) --export-filename $(@) $(<)
 
 versions/%.pdf: vectors/%.svg
-	$(INKSCAPE) --export-pdf $(@) $(<)
+	$(INKSCAPE) --export-filename $(@) $(<)
 
 viewpng:
 	eog $(FIGURES_PNG)
